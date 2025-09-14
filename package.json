@@ -1,0 +1,48 @@
+{
+  "type": "module",
+  "name": "my-nft-effects-core",
+  "version": "1.0.0",
+  "description": "Core effects library for NFT generation - extracted from my-nft-gen",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "echo 'Build process to be implemented'",
+    "lint": "echo 'Linting to be implemented'"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-paul-ruf/my-nft-effects-core.git"
+  },
+  "author": "John Paul Ruf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/john-paul-ruf/my-nft-effects-core/issues"
+  },
+  "homepage": "https://github.com/john-paul-ruf/my-nft-effects-core#readme",
+  "peerDependencies": {
+    "jimp": "^0.22.10",
+    "sharp": "^0.33.1",
+    "canvas": "^2.0.0",
+    "fabric": "^5.0.0"
+  },
+  "devDependencies": {
+    "my-nft-gen": "file:../my-nft-gen"
+  },
+  "keywords": [
+    "nft",
+    "effects",
+    "generative",
+    "art",
+    "graphics",
+    "canvas",
+    "image-processing",
+    "plugins",
+    "visual-effects"
+  ]
+}
