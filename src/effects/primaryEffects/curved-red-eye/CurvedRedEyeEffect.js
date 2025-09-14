@@ -225,6 +225,13 @@ export class CurvedRedEyeEffect extends LayerEffect {
     }
 
     getInfo() {
-        return `${this.name}`;
+        const avgLineLength = this.data.paths ?
+            Math.round(this.data.paths.reduce((sum, path) => sum + path.lineLength, 0) / this.data.paths.length) :
+            'calculating';
+        const avgLoops = this.data.paths ?
+            Math.round(this.data.paths.reduce((sum, path) => sum + path.numberOfLoops, 0) / this.data.paths.length) :
+            'calculating';
+
+        return `${this.name}: ${this.data.numberOfSpokes} spokes, line: ${avgLineLength}px, loops: ${avgLoops}x, blur: ${this.data.blurRange.lower}-${this.data.blurRange.upper}px (${this.data.featherTimes} times)`;
     }
 }
