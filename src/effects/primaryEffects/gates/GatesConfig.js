@@ -1,6 +1,8 @@
 import { EffectConfig } from 'my-nft-gen';
 import {Point2D} from "my-nft-gen/src/core/layer/configType/Point2D.js";
 import {ColorPicker} from "my-nft-gen/src/core/layer/configType/ColorPicker.js";
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
 /** *
  *
@@ -28,15 +30,15 @@ export class GatesConfig extends EffectConfig {
             layerOpacity = 1,
             underLayerOpacity = 0.5,
             center = new Point2D(1080 / 2, 1920 / 2),
-            gates = { lower: 1, upper: 3 },
-            numberOfSides = { lower: 4, upper: 4 },
+            gates = new Range(1, 3),
+            numberOfSides = new Range(4, 4),
             innerColor = new ColorPicker(),
             outerColor = new ColorPicker(),
             thickness = 24,
             stroke = 0,
-            accentRange = { bottom: { lower: 2, upper: 5 }, top: { lower: 10, upper: 15 } },
-            blurRange = { bottom: { lower: 1, upper: 2 }, top: { lower: 3, upper: 4 } },
-            featherTimes = { lower: 2, upper: 4 },
+            accentRange = new DynamicRange(new Range(2, 5), new Range(10, 15)),
+            blurRange = new DynamicRange(new Range(1, 2), new Range(3, 4)),
+            featherTimes = new Range(2, 4),
         },
     ) {
         super();

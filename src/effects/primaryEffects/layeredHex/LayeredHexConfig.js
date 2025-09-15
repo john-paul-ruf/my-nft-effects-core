@@ -1,5 +1,31 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
+/** *
+ *
+ * Config for Layered Hex Effect
+ * Creates layered hexagonal patterns with animated properties
+ *
+ * @invertLayers - boolean: whether to invert layer compositing order
+ * @thickness - number: line thickness
+ * @stroke - number: stroke width
+ * @layerOpacityRange - DynamicRange: layer opacity modulation range
+ * @layerOpacityTimes - Range: number of layer opacity cycles
+ * @indexOpacityRange - DynamicRange: index opacity modulation range
+ * @indexOpacityTimes - Range: number of index opacity cycles
+ * @radius - Range: hexagon radius range
+ * @offsetRadius - Range: offset radius range
+ * @numberOfIndex - Range: number of index elements
+ * @startIndex - Range: starting index range
+ * @startAngle - number: starting angle in degrees
+ * @movementGaston - Range: movement factor range
+ * @initialNumberOfPoints - number: initial number of points
+ * @scaleByFactor - number: scaling factor
+ * @accentRange - DynamicRange: accent weight range
+ * @blurRange - DynamicRange: blur amount range
+ * @featherTimes - Range: number of feather cycles
+ */
 export class LayeredHexConfig extends EffectConfig {
     constructor(
         {
@@ -8,28 +34,28 @@ export class LayeredHexConfig extends EffectConfig {
             thickness = 1,
             stroke = 1,
 
-            layerOpacityRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 1, upper: 1 } },
-            layerOpacityTimes = { lower: 2, upper: 4 },
+            layerOpacityRange = new DynamicRange(new Range(1, 1), new Range(1, 1)),
+            layerOpacityTimes = new Range(2, 4),
 
-            indexOpacityRange = { bottom: { lower: 0.3, upper: 0.5 }, top: { lower: 0.9, upper: 1 } },
-            indexOpacityTimes = { lower: 2, upper: 4 },
+            indexOpacityRange = new DynamicRange(new Range(0.3, 0.5), new Range(0.9, 1)),
+            indexOpacityTimes = new Range(2, 4),
 
-            radius = { lower: 10, upper: 20 },
-            offsetRadius = { lower: 15, upper: 30 },
+            radius = new Range(10, 20),
+            offsetRadius = new Range(15, 30),
 
-            numberOfIndex = { lower: 10, upper: 30 },
-            startIndex = { lower: 8, upper: 12 },
+            numberOfIndex = new Range(10, 30),
+            startIndex = new Range(8, 12),
 
             startAngle = 15,
 
-            movementGaston = { lower: 1, upper: 6 },
+            movementGaston = new Range(1, 6),
 
             initialNumberOfPoints = 12,
             scaleByFactor = 1.3,
 
-            accentRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 3, upper: 6 } },
-            blurRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 1, upper: 1 } },
-            featherTimes = { lower: 2, upper: 4 },
+            accentRange = new DynamicRange(new Range(1, 1), new Range(3, 6)),
+            blurRange = new DynamicRange(new Range(1, 1), new Range(1, 1)),
+            featherTimes = new Range(2, 4),
         },
     ) {
         super();

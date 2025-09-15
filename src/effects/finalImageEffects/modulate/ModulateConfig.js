@@ -1,25 +1,29 @@
 import {EffectConfig} from 'my-nft-gen/src/core/layer/EffectConfig.js';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
 /** *
  *
- * Config for Blur Effect
- * Creates an animated blur for the composite image
+ * Config for Modulate Effect
+ * Creates an animated modulation for the composite image
  * Can be glitched to appear on a percentage of the frames generated
  *
- * @lowerRange - a lower and upper value for where the amount of blur starts
- * @upperRange - a lower and upper value for where the amount of blur ends
- * @times - the number of times to blur from lower to upper during the total frame count
- * @glitchChance - the percent chance this effect could apply to a given frame
+ * @brightnessRange - DynamicRange: where the amount of brightness starts and ends
+ * @brightnessTimes - Range: the number of times to modulate brightness from lower to upper during the total frame count
+ * @saturationRange - DynamicRange: where the amount of saturation starts and ends
+ * @saturationTimes - Range: the number of times to modulate saturation from lower to upper during the total frame count
+ * @contrastRange - DynamicRange: where the amount of contrast starts and ends
+ * @contrastTimes - Range: the number of times to modulate contrast from lower to upper during the total frame count
  */
 export class ModulateConfig extends EffectConfig {
     constructor(
         {
-            brightnessRange  = {bottom: {lower: 0.8, upper: 0.8}, top: {lower: 1, upper: 1}},
-            brightnessTimes = {lower: 2, upper: 8},
-            saturationRange  = {bottom: {lower: 0.8, upper: 0.8}, top: {lower: 1, upper: 1}},
-            saturationTimes = {lower: 2, upper: 8},
-            contrastRange  = {bottom: {lower: 1, upper: 1}, top: {lower: 1.5, upper: 1.5}},
-            contrastTimes = {lower: 2, upper: 8},
+            brightnessRange  = new DynamicRange(new Range(0.8, 0.8), new Range(1, 1)),
+            brightnessTimes = new Range(2, 8),
+            saturationRange  = new DynamicRange(new Range(0.8, 0.8), new Range(1, 1)),
+            saturationTimes = new Range(2, 8),
+            contrastRange  = new DynamicRange(new Range(1, 1), new Range(1.5, 1.5)),
+            contrastTimes = new Range(2, 8),
         },
     ) {
         super();

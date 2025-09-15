@@ -1,4 +1,8 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
+import {Point2D} from "my-nft-gen/src/core/layer/configType/Point2D.js";
+import {ColorPicker} from "my-nft-gen/src/core/layer/configType/ColorPicker.js";
 
 /** *
  *
@@ -11,13 +15,13 @@ import { EffectConfig } from 'my-nft-gen';
  * @sparsityFactor - Array: Randomly picks from the array to draw a 'ray' every X angle
  * @stroke - the weight of the outer ray
  * @thickness - the weight of the inner ray
- * @accentRange - Dynamic Range: the weight to oscillate the fuzzy layer over the total frames by the number of feather times
- * @blurRange - Dynamic Range: the amount of blur to apply to the fuzzy layer over the total frames by the number of feather times
+ * @accentRange - DynamicRange: the weight to oscillate the fuzzy layer over the total frames by the number of feather times
+ * @blurRange - DynamicRange: the amount of blur to apply to the fuzzy layer over the total frames by the number of feather times
  * @featherTimes - Range: the number of times to apply the accent range and blur range over the total number of frames
  * @speed - Range: spin this amount of angle
  * @length - Length of the line to draw
  * @lineStart - From the center, where to start the line
- * @center - Where the center of the amp is in the overall composition
+ * @center - Point2D: Where the center of the amp is in the overall composition
  * @innerColor - ColorPicker: the color for the thickness
  * @outerColor - ColorPicker: the color for the stroke and accent
  *
@@ -33,15 +37,15 @@ export class AmpConfig extends EffectConfig {
             sparsityFactor = [1, 2, 3],
             stroke = 1,
             thickness = 1,
-            accentRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 3, upper: 6 } },
-            blurRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 1, upper: 1 } },
-            featherTimes = { lower: 2, upper: 4 },
-            speed = { lower: 24, upper: 36 },
+            accentRange = new DynamicRange(new Range(1, 1), new Range(3, 6)),
+            blurRange = new DynamicRange(new Range(1, 1), new Range(1, 1)),
+            featherTimes = new Range(2, 4),
+            speed = new Range(24, 36),
             length = 200,
             lineStart = 350,
-            center = { x: 1080 / 2, y: 1920 / 2 },
-            innerColor = null,
-            outerColor = null,
+            center = new Point2D(1080 / 2, 1920 / 2),
+            innerColor = new ColorPicker(ColorPicker.SelectionType.colorBucket),
+            outerColor = new ColorPicker(ColorPicker.SelectionType.colorBucket),
         },
     ) {
         super();

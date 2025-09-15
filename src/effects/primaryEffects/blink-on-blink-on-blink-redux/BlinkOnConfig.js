@@ -1,4 +1,7 @@
 import { EffectConfig } from 'my-nft-gen';
+import {PercentageRange} from "my-nft-gen/src/core/layer/configType/PercentageRange.js";
+import {PercentageShortestSide} from "my-nft-gen/src/core/layer/configType/PercentageShortestSide.js";
+import {PercentageLongestSide} from "my-nft-gen/src/core/layer/configType/PercentageLongestSide.js";
 
 /** *
  *
@@ -26,10 +29,7 @@ export class BlinkOnConfig extends EffectConfig {
             numberOfBlinks = { lower: 1, upper: 2 },
             initialRotation = { lower: 0, upper: 360 },
             rotationSpeedRange = { lower: 1, upper: 2 },
-            diameterRange = {
-                lower: (finalSize) => finalSize.shortestSide * 0.25,
-                upper: (finalSize) => finalSize.longestSide * 0.8,
-            },
+            diameterRange = new PercentageRange(new PercentageShortestSide(0.25), new PercentageLongestSide(0.8)),
             glowLowerRange = { lower: -128, upper: -64 },
             glowUpperRange = { lower: 64, upper: 128 },
             glowTimes = { lower: 2, upper: 4 },

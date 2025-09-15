@@ -1,4 +1,5 @@
 import {EffectConfig} from 'my-nft-gen/src/core/layer/EffectConfig.js';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
 
 /** *
  *
@@ -6,17 +7,17 @@ import {EffectConfig} from 'my-nft-gen/src/core/layer/EffectConfig.js';
  * Creates an animated blur for the composite image
  * Can be glitched to appear on a percentage of the frames generated
  *
- * @lowerRange - a lower and upper value for where the amount of blur starts
- * @upperRange - a lower and upper value for where the amount of blur ends
- * @times - the number of times to blur from lower to upper during the total frame count
+ * @lowerRange - Range: where the amount of blur starts
+ * @upperRange - Range: where the amount of blur ends
+ * @times - Range: the number of times to blur from lower to upper during the total frame count
  * @glitchChance - the percent chance this effect could apply to a given frame
  */
 export class BlurConfig extends EffectConfig {
     constructor(
         {
-            lowerRange = {lower: 0, upper: 0},
-            upperRange = {lower: 4, upper: 8},
-            times = {lower: 2, upper: 6},
+            lowerRange = new Range(0, 0),
+            upperRange = new Range(4, 8),
+            times = new Range(2, 6),
             glitchChance = 100,
         },
     ) {

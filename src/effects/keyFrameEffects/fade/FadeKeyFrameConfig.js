@@ -1,13 +1,14 @@
 import {EffectConfig} from 'my-nft-gen/src/core/layer/EffectConfig.js';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
 
 export class FadeKeyFrameConfig extends EffectConfig {
     constructor(
         {
             keyFrames = [0, 120, 360, 900],
             glitchFrameCount = [15, 30],
-            lowerRange = { lower: 0.6, upper: 0.8 },
-            upperRange = { lower: 0.6, upper: 0.8 },
-            times = { lower: 2, upper: 4 },
+            lowerRange = new Range(0.6, 0.8),
+            upperRange = new Range(0.6, 0.8),
+            times = new Range(2, 4),
         }
     ) {
         super();

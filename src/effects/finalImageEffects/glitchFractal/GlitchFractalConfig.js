@@ -1,4 +1,5 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
 
 
 /** *
@@ -7,13 +8,13 @@ import { EffectConfig } from 'my-nft-gen';
  * Creates a static glitch for the composite image
  * Can be glitched to appear on a percentage of the frames generated
  *
- * @theRandom - the fractal amount
+ * @theRandom - Range: the fractal amount
  * @glitchChance - the percent chance this effect could apply to a given frame
  */
 export class GlitchFractalConfig extends EffectConfig {
     constructor(
         {
-            theRandom = { lower: 5, upper: 10 },
+            theRandom = new Range(5, 10),
             glitchChance = 100,
         },
     ) {

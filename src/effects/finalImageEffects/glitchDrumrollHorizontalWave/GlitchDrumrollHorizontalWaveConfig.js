@@ -1,4 +1,5 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
 
 /** *
  *
@@ -7,17 +8,17 @@ import { EffectConfig } from 'my-nft-gen';
  * Can be glitched to appear on a percentage of the frames generated
  *
  * @glitchChance - the percent chance this effect could apply to a given frame
- * @glitchOffset - the amount of 'slice' visible
- * @glitchOffsetTimes - the number of times to glitch during the total frame count
- * @cosineFactor - changes the 'slice'
+ * @glitchOffset - Range: the amount of 'slice' visible
+ * @glitchOffsetTimes - Range: the number of times to glitch during the total frame count
+ * @cosineFactor - Range: changes the 'slice'
  */
 export class GlitchDrumrollHorizontalWaveConfig extends EffectConfig {
     constructor(
         {
             glitchChance = 100,
-            glitchOffset = { lower: 40, upper: 80 },
-            glitchOffsetTimes = { lower: 1, upper: 3 },
-            cosineFactor = { lower: 2, upper: 6 },
+            glitchOffset = new Range(40, 80),
+            glitchOffsetTimes = new Range(1, 3),
+            cosineFactor = new Range(2, 6),
         },
     ) {
         super();

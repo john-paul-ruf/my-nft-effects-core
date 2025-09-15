@@ -1,6 +1,9 @@
 import { EffectConfig } from 'my-nft-gen';
 import { ColorPicker } from 'my-nft-gen/src/core/layer/configType/ColorPicker.js';
 import {Point2D} from "my-nft-gen/src/core/layer/configType/Point2D.js";
+import {PercentageRange} from "my-nft-gen/src/core/layer/configType/PercentageRange.js";
+import {PercentageShortestSide} from "my-nft-gen/src/core/layer/configType/PercentageShortestSide.js";
+import {PercentageLongestSide} from "my-nft-gen/src/core/layer/configType/PercentageLongestSide.js";
 
 /** *
  *
@@ -37,10 +40,7 @@ export class FuzzyBandConfig extends EffectConfig {
             circles = { lower: 6, upper: 10 },
             stroke = 0,
             thickness = 4,
-            radius = {
-                lower: (finalSize) => finalSize.shortestSide * 0.10,
-                upper: (finalSize) => finalSize.longestSide * 0.45,
-            },
+            radius = new PercentageRange(new PercentageShortestSide(0.10), new PercentageLongestSide(0.45)),
             accentRange = { bottom: { lower: 6, upper: 12 }, top: { lower: 25, upper: 45 } },
             blurRange = { bottom: { lower: 1, upper: 3 }, top: { lower: 8, upper: 12 } },
             featherTimes = { lower: 2, upper: 6 },

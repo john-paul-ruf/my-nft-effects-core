@@ -1,6 +1,8 @@
 import { EffectConfig } from 'my-nft-gen';
 import { Point2D } from 'my-nft-gen/src/core/layer/configType/Point2D.js';
 import { ColorPicker } from 'my-nft-gen/src/core/layer/configType/ColorPicker.js';
+import {PercentageRange} from "my-nft-gen/src/core/layer/configType/PercentageRange.js";
+import {PercentageShortestSide} from "my-nft-gen/src/core/layer/configType/PercentageShortestSide.js";
 
 /** *
  *
@@ -38,10 +40,7 @@ export class EncircledSpiralConfig extends EffectConfig {
             stroke = 1,
             thickness = 2,
             sparsityFactor = [60],
-            sequencePixelConstant = {
-                lower: (finalSize) => finalSize.shortestSide * 0.001,
-                upper: (finalSize) => finalSize.shortestSide * 0.001,
-            },
+            sequencePixelConstant = new PercentageRange(new PercentageShortestSide(0.001), new PercentageShortestSide(0.001)),
             sequence = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181],
             minSequenceIndex = [12],
             numberOfSequenceElements = [3],

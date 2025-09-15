@@ -1,5 +1,7 @@
 import { EffectConfig } from 'my-nft-gen';
 import {ColorPicker} from "my-nft-gen/src/core/layer/configType/ColorPicker.js";
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
 export class HexConfig extends EffectConfig {
     constructor(
@@ -9,11 +11,11 @@ export class HexConfig extends EffectConfig {
             sparsityFactor = [12, 15, 18/* 20, 24, 30, 36 */],
             outerColor = new ColorPicker(ColorPicker.SelectionType.colorBucket),
             innerColor = new ColorPicker(ColorPicker.SelectionType.colorBucket),
-            gapFactor = { lower: 3, upper: 6 },
-            radiusFactor = { lower: 1, upper: 3 },
-            accentRange = { bottom: { lower: 0, upper: 0 }, top: { lower: 0.75, upper: 1.5 } },
-            blurRange = { bottom: { lower: 0, upper: 1 }, top: { lower: 2, upper: 3 } },
-            featherTimes = { lower: 2, upper: 4 },
+            gapFactor = new Range(3, 6),
+            radiusFactor = new Range(1, 3),
+            accentRange = new DynamicRange(new Range(0, 0), new Range(0.75, 1.5)),
+            blurRange = new DynamicRange(new Range(0, 1), new Range(2, 3)),
+            featherTimes = new Range(2, 4),
             stroke = 1,
             thickness = 0.5,
             scaleFactor = 0.5,

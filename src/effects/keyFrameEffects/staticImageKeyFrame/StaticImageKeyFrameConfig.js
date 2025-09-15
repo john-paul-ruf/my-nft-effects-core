@@ -5,7 +5,7 @@ export class StaticImageKeyFrameConfig extends EffectConfig {
     constructor(
         {
             fileName = '/imageOverlay/',
-            center = new Point2D(0,0),
+            center = new Point2D(1080 / 2, 1920 / 2),
             layerOpacity = [0.95],
             buffer = [555],
             keyFrames = [0, 120, 360, 900],

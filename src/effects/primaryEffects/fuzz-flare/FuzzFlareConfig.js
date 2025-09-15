@@ -19,8 +19,8 @@ import {FindValueAlgorithm, getAllFindValueAlgorithms} from "my-nft-gen/src/core
  * @outerColor - ColorPicker: the color for the stroke and accent
  * @layerOpacity - the opacity of the top, non-fuzzy, layer
  * @center - Point2D: Where the center is in the overall composition
- * @underLayerOpacityRange - the opacity of the bottom, fuzzy, layer
- * @underLayerOpacityTimes - the number of times to move through the underlay opacity range over the number of frames
+ * @underLayerOpacityRange - DynamicRange: the opacity of the bottom, fuzzy, layer
+ * @underLayerOpacityTimes - Range: the number of times to move through the underlay opacity range over the number of frames
  * @elementGastonMultiStep Array of MultiStepDefinitionConfig - experimental
  * @numberOfFlareRings = Range: number of rings to draw,
  * @flareRingsSizeRange = PercentageRange: the range to draw the rings within,
@@ -31,8 +31,8 @@ import {FindValueAlgorithm, getAllFindValueAlgorithms} from "my-nft-gen/src/core
  * @flareRaysStroke = Range: the stroke to apply to the rays,
  * @flareRayThickness = Range: the thickness of the rays,
  * @flareOffset = PercentageRange: the radius from the center to start drawing the rays,
- * @accentRange - Dynamic Range: the weight to oscillate the fuzzy layer over the total frames by the number of feather times
- * @blurRange - Dynamic Range: the amount of blur to apply to the fuzzy layer over the total frames by the number of feather times
+ * @accentRange - DynamicRange: the weight to oscillate the fuzzy layer over the total frames by the number of feather times
+ * @blurRange - DynamicRange: the amount of blur to apply to the fuzzy layer over the total frames by the number of feather times
  * @featherTimes - Range: the number of times to apply the accent range and blur range over the total number of frames
  *
  */
@@ -49,8 +49,8 @@ export class FuzzFlareConfig extends EffectConfig {
 
             center = new Point2D(1080 / 2, 1920 / 2),
 
-            underLayerOpacityRange = {bottom: {lower: 0.35, upper: 0.4}, top: {lower: 0.5, upper: 0.55}},
-            underLayerOpacityTimes = {lower: 2, upper: 8},
+            underLayerOpacityRange = new DynamicRange(new Range(0.35, 0.4), new Range(0.5, 0.55)),
+            underLayerOpacityTimes = new Range(2, 8),
 
             elementGastonMultiStep = [
                 new MultiStepDefinitionConfig({
@@ -84,9 +84,9 @@ export class FuzzFlareConfig extends EffectConfig {
             flareRayThickness = new Range(1, 3),
             flareOffset = new PercentageRange(new PercentageShortestSide(0.01), new PercentageShortestSide(0.06)),
 
-            accentRange = {bottom: {lower: 2, upper: 6}, top: {lower: 8, upper: 14}},
-            blurRange = {bottom: {lower: 4, upper: 6}, top: {lower: 8, upper: 12}},
-            featherTimes = {lower: 2, upper: 8},
+            accentRange = new DynamicRange(new Range(2, 6), new Range(8, 14)),
+            blurRange = new DynamicRange(new Range(4, 6), new Range(8, 12)),
+            featherTimes = new Range(2, 8),
 
             accentFindValueAlgorithm = getAllFindValueAlgorithms(),
             blurFindValueAlgorithm = getAllFindValueAlgorithms(),

@@ -1,4 +1,6 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
 export class LayeredRingConfig extends EffectConfig {
     constructor(
@@ -6,21 +8,21 @@ export class LayeredRingConfig extends EffectConfig {
             thickness = 4,
             stroke = 0,
 
-            layerOpacityRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 1, upper: 1 } },
-            layerOpacityTimes = { lower: 2, upper: 4 },
+            layerOpacityRange = new DynamicRange(new Range(1, 1), new Range(1, 1)),
+            layerOpacityTimes = new Range(2, 4),
 
-            indexOpacityRange = { bottom: { lower: 0.3, upper: 0.5 }, top: { lower: 0.9, upper: 1 } },
-            indexOpacityTimes = { lower: 2, upper: 4 },
+            indexOpacityRange = new DynamicRange(new Range(0.3, 0.5), new Range(0.9, 1)),
+            indexOpacityTimes = new Range(2, 4),
 
-            radius = { lower: 20, upper: 30 },
-            offsetRadius = { lower: 20, upper: 40 },
+            radius = new Range(20, 30),
+            offsetRadius = new Range(20, 40),
 
-            numberOfIndex = { lower: 5, upper: 20 },
-            startIndex = { lower: 8, upper: 12 },
+            numberOfIndex = new Range(5, 20),
+            startIndex = new Range(8, 12),
 
             startAngle = 0,
 
-            movementGaston = { lower: 1, upper: 6 },
+            movementGaston = new Range(1, 6),
 
             initialNumberOfPoints = 4,
             scaleByFactor = 1.2,

@@ -1,6 +1,11 @@
 import { EffectConfig } from 'my-nft-gen';
 import { Point2D } from 'my-nft-gen/src/core/layer/configType/Point2D.js';
 import { ColorPicker } from 'my-nft-gen/src/core/layer/configType/ColorPicker.js';
+import {PercentageRange} from "my-nft-gen/src/core/layer/configType/PercentageRange.js";
+import {PercentageShortestSide} from "my-nft-gen/src/core/layer/configType/PercentageShortestSide.js";
+import {PercentageLongestSide} from "my-nft-gen/src/core/layer/configType/PercentageLongestSide.js";
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
 /** *
  *
@@ -41,28 +46,16 @@ export class FuzzyRipplesConfig extends EffectConfig {
             outerColor = new ColorPicker(),
             speed = 1,
             invertDirection = false,
-            largeRadius = {
-                lower: (finalSize) => finalSize.longestSide * 0.15,
-                upper: (finalSize) => finalSize.longestSide * 0.15,
-            },
-            smallRadius = {
-                lower: (finalSize) => finalSize.longestSide * 0.25,
-                upper: (finalSize) => finalSize.longestSide * 0.25,
-            },
-            largeNumberOfRings = { lower: 8, upper: 8 },
-            smallNumberOfRings = { lower: 8, upper: 8 },
-            ripple = {
-                lower: (finalSize) => finalSize.shortestSide * 0.10,
-                upper: (finalSize) => finalSize.shortestSide * 0.10,
-            },
-            times = { lower: 2, upper: 4 },
-            smallerRingsGroupRadius = {
-                lower: (finalSize) => finalSize.shortestSide * 0.3,
-                upper: (finalSize) => finalSize.shortestSide * 0.3,
-            },
-            accentRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 3, upper: 6 } },
-            blurRange = { bottom: { lower: 1, upper: 1 }, top: { lower: 1, upper: 1 } },
-            featherTimes = { lower: 2, upper: 4 },
+            largeRadius = new PercentageRange(new PercentageLongestSide(0.15), new PercentageLongestSide(0.15)),
+            smallRadius = new PercentageRange(new PercentageLongestSide(0.25), new PercentageLongestSide(0.25)),
+            largeNumberOfRings = new Range(8, 8),
+            smallNumberOfRings = new Range(8, 8),
+            ripple = new PercentageRange(new PercentageShortestSide(0.10), new PercentageShortestSide(0.10)),
+            times = new Range(2, 4),
+            smallerRingsGroupRadius = new PercentageRange(new PercentageShortestSide(0.3), new PercentageShortestSide(0.3)),
+            accentRange = new DynamicRange(new Range(1, 1), new Range(3, 6)),
+            blurRange = new DynamicRange(new Range(1, 1), new Range(1, 1)),
+            featherTimes = new Range(2, 4),
         },
     ) {
         super();

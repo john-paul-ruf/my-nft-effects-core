@@ -1,11 +1,12 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
 
 export class GlowConfig extends EffectConfig {
     constructor(
         {
-            lowerRange = { lower: -18, upper: -0 },
-            upperRange = { lower: 0, upper: 18 },
-            times = { lower: 2, upper: 6 },
+            lowerRange = new Range(-18, -0),
+            upperRange = new Range(0, 18),
+            times = new Range(2, 6),
         },
     ) {
         super();

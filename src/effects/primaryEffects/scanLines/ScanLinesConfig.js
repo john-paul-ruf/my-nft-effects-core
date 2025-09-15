@@ -1,15 +1,17 @@
 import { EffectConfig } from 'my-nft-gen';
+import {Range} from "my-nft-gen/src/core/layer/configType/Range.js";
+import {DynamicRange} from "my-nft-gen/src/core/layer/configType/DynamicRange.js";
 
 export class ScanLinesConfig extends EffectConfig {
     constructor(
         {
-            lines = { lower: 2, upper: 4 },
-            minlength = { lower: 30, upper: 40 },
-            maxlength = { lower: 80, upper: 100 },
-            times = { lower: 4, upper: 8 },
-            alphaRange = { bottom: { lower: 0.3, upper: 0.4 }, top: { lower: 0.5, upper: 0.6 } },
-            alphaTimes = { lower: 4, upper: 8 },
-            loopTimes = { lower: 1, upper: 2 },
+            lines = new Range(2, 4),
+            minlength = new Range(30, 40),
+            maxlength = new Range(80, 100),
+            times = new Range(4, 8),
+            alphaRange = new DynamicRange(new Range(0.3, 0.4), new Range(0.5, 0.6)),
+            alphaTimes = new Range(4, 8),
+            loopTimes = new Range(1, 2),
         },
     ) {
         super();
